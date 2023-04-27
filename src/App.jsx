@@ -102,7 +102,14 @@ export default function App() {
       const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
       console.log("Conectado", accounts[0]);
+      
       setCurrentAccount(accounts[0]);
+
+      if (ethereum) {
+        getAllWaves();
+        return;
+      }
+      
     } catch (error) {
       console.log(error)
     }
